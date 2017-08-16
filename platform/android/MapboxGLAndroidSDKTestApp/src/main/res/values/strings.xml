@@ -7,12 +7,12 @@
     <string name="activity_map_fragment">Map Fragment</string>
     <string name="activity_multimap">Multiple Maps on Screen</string>
     <string name="activity_add_bulk_markers">Add Markers In Bulk</string>
-    <string name="activity_animated_marker">Animated Markers</string>
+    <string name="activity_animated_marker">Animated Markers (deprecated)</string>
     <string name="activity_dynamic_marker">Dynamic Marker</string>
     <string name="activity_polyline">Polyline</string>
     <string name="activity_polygon">Polygon</string>
     <string name="activity_press_for_marker">Press Map For Marker</string>
-    <string name="activity_view_marker">View Marker API</string>
+    <string name="activity_view_marker">View Marker API (deprecated)</string>
     <string name="activity_add_remove_markers">Zoom function with SymbolLayer</string>
     <string name="activity_info_window">Standard InfoWindow</string>
     <string name="activity_infowindow_adapter">Custom InfoWindow</string>
@@ -49,6 +49,7 @@
     <string name="activity_query_rendered_features_box_symbol_count">Count symbols in box</string>
     <string name="activity_query_rendered_features_box_highlight">Highlight features in box</string>
     <string name="activity_query_source_features">Query source features</string>
+    <string name="activity_symbol_generator">SymbolGenerator</string>
     <string name="activity_symbol_layer">Symbols</string>
     <string name="activity_add_sprite">Add Custom Sprite</string>
     <string name="activity_navigation_drawer">Android SDK View integration</string>
@@ -56,7 +57,7 @@
     <string name="activity_map_change">Map Change Events</string>
     <string name="activity_map_visibility">Visibility Map</string>
     <string name="activity_map_in_dialog">Dialog with map</string>
-    <string name="activity_marker_view_rectangle">Marker views in rectangle</string>
+    <string name="activity_marker_view_rectangle">Marker views in rectangle (deprecated)</string>
     <string name="activity_url_transform">Url transform</string>
     <string name="activity_restricted_bounds">Restrict camera to a bounds</string>
     <string name="activity_fill_extrusion_layer">Fill extrusions</string>
@@ -112,6 +113,7 @@
     <string name="description_query_rendered_features_box_symbol_count">Count all rendered symbols in box</string>
     <string name="description_query_rendered_features_box_highlight">Hightligh buildings in box</string>
     <string name="description_query_source_features">Query source for features</string>
+    <string name="description_symbol_generator">Use Android SDK Views as symbols</string>
     <string name="description_simple_map">Shows a simple map</string>
     <string name="description_map_change">Logs map change events to Logcat</string>
     <string name="description_visibility_map">Changes visibility of map and view parent</string>
@@ -166,6 +168,7 @@
     <string name="menuitem_title_change_location_source_lost">Change to LOST location source</string>
     <string name="menuitem_title_change_location_source_mock">Change to mock location source</string>
     <string name="menuitem_title_change_location_source_null">Reset location source to null</string>
+    <string name="menuitem_change_icon_overlap">Toggle icon overlap</string>
 
     <!--Button-->
     <string name="button_camera_move">Move</string>
