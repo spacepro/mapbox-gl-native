@@ -507,6 +507,13 @@ final class NativeMapView {
     nativeAddAnnotationIcon(symbol, width, height, scale, pixels);
   }
 
+  public void removeAnnotationIcon(String symbol) {
+    if (isDestroyedOn("removeAnnotationIcon")) {
+      return;
+    }
+    nativeRemoveAnnotationIcon(symbol);
+  }
+
   public void setVisibleCoordinateBounds(LatLng[] coordinates, RectF padding, double direction, long duration) {
     if (isDestroyedOn("setVisibleCoordinateBounds")) {
       return;
@@ -801,6 +808,13 @@ final class NativeMapView {
     nativeRemoveImage(name);
   }
 
+  public Bitmap getImage(String name) {
+    if (isDestroyedOn("getImage")) {
+      return null;
+    }
+    return nativeGetImage(name);
+  }
+
   // Feature querying
 
   @NonNull
@@ -990,6 +1004,8 @@ final class NativeMapView {
 
   private native void nativeAddAnnotationIcon(String symbol, int width, int height, float scale, byte[] pixels);
 
+  private native void nativeRemoveAnnotationIcon(String symbol);
+
   private native void nativeSetVisibleCoordinateBounds(LatLng[] coordinates, RectF padding,
                                                        double direction, long duration);
 
@@ -1068,6 +1084,8 @@ final class NativeMapView {
                                      byte[] array);
 
   private native void nativeRemoveImage(String name);
+
+  private native Bitmap nativeGetImage(String name);
 
   private native void nativeUpdatePolygon(long polygonId, Polygon polygon);
 

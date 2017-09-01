@@ -24,6 +24,7 @@
 #include "geometry/lat_lng_bounds.hpp"
 #include "map/camera_position.hpp"
 #include "style/light.hpp"
+#include "bitmap.hpp"
 
 #include <exception>
 #include <string>
@@ -199,6 +200,8 @@ public:
 
     void addAnnotationIcon(JNIEnv&, jni::String, jint, jint, jfloat, jni::Array<jbyte>);
 
+    void removeAnnotationIcon(JNIEnv&, jni::String);
+
     jni::jdouble getTopOffsetPixelsForAnnotationSymbol(JNIEnv&, jni::String);
 
     jni::jlong getTransitionDuration(JNIEnv&);
@@ -250,6 +253,8 @@ public:
     void addImage(JNIEnv&, jni::String, jni::jint, jni::jint, jni::jfloat, jni::Array<jbyte>);
 
     void removeImage(JNIEnv&, jni::String);
+
+    jni::Object<Bitmap> getImage(JNIEnv&, jni::String);
 
     void setPrefetchesTiles(JNIEnv&, jni::jboolean);
 

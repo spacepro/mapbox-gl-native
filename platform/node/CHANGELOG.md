@@ -1,3 +1,6 @@
+# master 
+* Increased the default maximum zoom level from 20 to 22 ([#9835](https://github.com/mapbox/mapbox-gl-native/pull/9835))
+
 # 3.5.6 - July 25, 2017
 - Protects against requests which throw [#9554](https://github.com/mapbox/mapbox-gl-native/pull/9554)
 - Fixed an issue around reusing a map object [#9554](https://github.com/mapbox/mapbox-gl-native/pull/9554)

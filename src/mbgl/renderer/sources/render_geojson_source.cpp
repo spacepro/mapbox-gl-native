@@ -34,17 +34,22 @@ void RenderGeoJSONSource::update(Immutable<style::Source::Impl> baseImpl_,
 
     GeoJSONData* data_ = impl().getData();
 
-    if (!data_) {
-        return;
-    }
-
     if (data_ != data) {
         data = data_;
         tilePyramid.cache.clear();
 
-        for (auto const& item : tilePyramid.tiles) {
-            static_cast<GeoJSONTile*>(item.second.get())->updateData(data->getTile(item.first.canonical));
+        if (data) {
+            for (auto const& item : tilePyramid.tiles) {
+                static_cast<GeoJSONTile*>(item.second.get())->updateData(data->getTile(item.first.canonical));
+            }
+        } else {
+            tilePyramid.tiles.clear();
+            tilePyramid.renderTiles.clear();
         }
+    }
+
+    if (!data) {
+        return;
     }
 
     tilePyramid.update(layers,
@@ -75,9 +80,9 @@ std::vector<std::reference_wrapper<RenderTile>> RenderGeoJSONSource::getRenderTi
 std::unordered_map<std::string, std::vector<Feature>>
 RenderGeoJSONSource::queryRenderedFeatures(const ScreenLineString& geometry,
                                            const TransformState& transformState,
-                                           const RenderStyle& style,
+                                           const std::vector<const RenderLayer*>& layers,
                                            const RenderedQueryOptions& options) const {
-    return tilePyramid.queryRenderedFeatures(geometry, transformState, style, options);
+    return tilePyramid.queryRenderedFeatures(geometry, transformState, layers, options);
 }
 
 std::vector<Feature> RenderGeoJSONSource::querySourceFeatures(const SourceQueryOptions& options) const {

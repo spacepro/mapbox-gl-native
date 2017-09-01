@@ -108,7 +108,7 @@ run-test-%: test
 run-benchmark: run-benchmark-.
 
 run-benchmark-%: benchmark
-	$(MACOS_OUTPUT_PATH)/$(BUILDTYPE)/mbgl-benchmark --benchmark_filter=$*
+	$(MACOS_OUTPUT_PATH)/$(BUILDTYPE)/mbgl-benchmark --benchmark_filter=$* ${BENCHMARK_ARGS}
 
 .PHONY: node-benchmark
 node-benchmark: $(MACOS_PROJ_PATH)
@@ -440,6 +440,12 @@ test-node: node
 	npm test
 	npm run test-suite
 
+.PHONY: test-node-recycle-map
+test-node-recycle-map: node
+	npm test
+	npm run test-render -- --recycle-map
+	npm run test-query
+
 #### Android targets ###########################################################
 
 MBGL_ANDROID_ABIS  = arm-v5;armeabi
@@ -609,6 +615,10 @@ run-android-ui-test-spoon: platform/android/configuration.gradle
 .PHONY: test-code-android
 test-code-android:
 	node platform/android/scripts/generate-test-code.js
+
+# Runs checkstyle and lint on the Android code
+.PHONY: android-check
+android-check : android-checkstyle android-lint-sdk android-lint-test-app
 
 # Runs checkstyle on the Android code
 .PHONY: android-checkstyle

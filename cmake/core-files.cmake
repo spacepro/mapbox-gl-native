@@ -8,6 +8,7 @@ set(MBGL_CORE_FILES
     include/mbgl/actor/message.hpp
     include/mbgl/actor/scheduler.hpp
     src/mbgl/actor/mailbox.cpp
+    src/mbgl/actor/scheduler.cpp
 
     # algorithm
     src/mbgl/algorithm/covered_by_children.hpp
@@ -112,7 +113,6 @@ set(MBGL_CORE_FILES
     src/mbgl/map/transform.hpp
     src/mbgl/map/transform_state.cpp
     src/mbgl/map/transform_state.hpp
-    src/mbgl/map/update.hpp
     src/mbgl/map/zoom_history.hpp
 
     # math
@@ -182,7 +182,6 @@ set(MBGL_CORE_FILES
     src/mbgl/renderer/possibly_evaluated_property_value.hpp
     src/mbgl/renderer/property_evaluation_parameters.hpp
     src/mbgl/renderer/property_evaluator.hpp
-    src/mbgl/renderer/render_item.hpp
     src/mbgl/renderer/render_layer.cpp
     src/mbgl/renderer/render_layer.hpp
     src/mbgl/renderer/render_light.cpp
@@ -193,9 +192,6 @@ set(MBGL_CORE_FILES
     src/mbgl/renderer/render_source_observer.hpp
     src/mbgl/renderer/render_static_data.cpp
     src/mbgl/renderer/render_static_data.hpp
-    src/mbgl/renderer/render_style.cpp
-    src/mbgl/renderer/render_style.hpp
-    src/mbgl/renderer/render_style_observer.hpp
     src/mbgl/renderer/render_tile.cpp
     src/mbgl/renderer/render_tile.hpp
     src/mbgl/renderer/renderer.cpp
@@ -553,6 +549,7 @@ set(MBGL_CORE_FILES
     include/mbgl/util/run_loop.hpp
     include/mbgl/util/size.hpp
     include/mbgl/util/string.hpp
+    include/mbgl/util/thread.hpp
     include/mbgl/util/tileset.hpp
     include/mbgl/util/timer.hpp
     include/mbgl/util/traits.hpp
@@ -609,7 +606,6 @@ set(MBGL_CORE_FILES
     src/mbgl/util/stopwatch.cpp
     src/mbgl/util/stopwatch.hpp
     src/mbgl/util/string.cpp
-    src/mbgl/util/thread.hpp
     src/mbgl/util/thread_local.hpp
     src/mbgl/util/throttler.cpp
     src/mbgl/util/throttler.hpp
