@@ -2429,9 +2429,6 @@ public:
         return nil;
     }
     
-    std::vector<MGLAnnotationTag> visibleAnnotations = [self annotationTagsInRect:self.bounds];
-    NSArray *visiblePlaceFeatures = self.visiblePlaceFeatures;
-    
     // Compass
     NSUInteger compassIndex = 0;
     if (index == compassIndex)
@@ -2453,6 +2450,7 @@ public:
     }
     
     // Visible annotations
+    std::vector<MGLAnnotationTag> visibleAnnotations = [self annotationTagsInRect:self.bounds];
     NSRange visibleAnnotationRange = NSMakeRange(NSMaxRange(userLocationAnnotationRange), visibleAnnotations.size());
     if (NSLocationInRange(index, visibleAnnotationRange))
     {
@@ -2474,6 +2472,7 @@ public:
     }
     
     // Visible place features
+    NSArray *visiblePlaceFeatures = self.visiblePlaceFeatures;
     NSRange visiblePlaceFeatureRange = NSMakeRange(NSMaxRange(visibleAnnotationRange), visiblePlaceFeatures.count);
     if (NSLocationInRange(index, visiblePlaceFeatureRange))
     {
@@ -2584,7 +2583,7 @@ public:
     }
     if (!element)
     {
-        element = [[MGLFeatureAccessibilityElement alloc] initWithAccessibilityContainer:self feature:feature];
+        element = [[MGLPlaceFeatureAccessibilityElement alloc] initWithAccessibilityContainer:self feature:feature];
     }
     if (!feature)
     {
