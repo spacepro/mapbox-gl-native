@@ -513,8 +513,9 @@ public final class MapboxMap {
    * Sets the maximum zoom level the map can be displayed at.
    * </p>
    * <p>
-   *   The default maximum zoomn level is 22. The upper bound for this value is 25.5.
+   * The default maximum zoomn level is 22. The upper bound for this value is 25.5.
    * </p>
+   *
    * @param maxZoom The new maximum zoom level.
    */
   public void setMaxZoomPreference(@FloatRange(from = MapboxConstants.MINIMUM_ZOOM,
@@ -609,6 +610,46 @@ public final class MapboxMap {
   //
   // Camera API
   //
+
+  /**
+   * Moves the center of the screen to a latitude and longitude specified by a LatLng object. This centers the
+   * camera on the LatLng object.
+   *
+   * @param latLng Target location to change to
+   */
+  public void setLatLng(@NonNull LatLng latLng) {
+    nativeMapView.setLatLng(latLng);
+  }
+
+  /**
+   * Moves the camera viewpoint to a particular zoom level.
+   *
+   * @param zoom Zoom level to change to
+   */
+  public void setZoom(@FloatRange(from = MapboxConstants.MINIMUM_ZOOM, to = MapboxConstants.MAXIMUM_ZOOM) double zoom) {
+    //TODO use actual focal point
+    PointF pointF = new PointF(nativeMapView.getWidth() / 2, nativeMapView.getHeight() / 2);
+    nativeMapView.setZoom(zoom, pointF, 0);
+  }
+
+  /**
+   * Moves the camera viewpoint angle to a particular angle in degrees.
+   *
+   * @param tilt Tilt angle to change to
+   */
+  public void setTilt(@FloatRange(from = MapboxConstants.MINIMUM_TILT, to = MapboxConstants.MAXIMUM_TILT) double tilt) {
+    nativeMapView.setPitch(tilt, 0);
+  }
+
+  /**
+   * Moves the camera viewpoint direction to a particular angle in degrees.
+   *
+   * @param bearing Direction angle to change to
+   */
+  public void setBearing(@FloatRange(from = MapboxConstants.MINIMUM_DIRECTION, to = MapboxConstants.MAXIMUM_DIRECTION)
+                           double bearing) {
+    nativeMapView.setBearing(bearing);
+  }
 
   /**
    * Cancels ongoing animations.

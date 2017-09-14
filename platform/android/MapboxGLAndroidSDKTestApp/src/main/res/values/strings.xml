@@ -18,6 +18,7 @@
     <string name="activity_infowindow_adapter">Custom InfoWindow</string>
     <string name="activity_dynamic_infowindow_adapter">Custom Dynamic InfoWindow</string>
     <string name="activity_camera_animation_types">Animation Types</string>
+    <string name="activity_camera_animator">Animator animation</string>
     <string name="activity_camera_zoom">Zoom Methods</string>
     <string name="activity_visible_coordinate_bounds">LatLngBounds Method</string>
     <string name="activity_camera_position">CameraPosition Method</string>
@@ -83,6 +84,7 @@
     <string name="description_info_window">Learn how to handle the InfoWindow</string>
     <string name="description_add_bulk_markers">Add Markers In Bulk to a Map</string>
     <string name="description_camera_animation_types">Showcase the different animation types</string>
+    <string name="description_camera_animator">Use Android SDK Animators to animate camera position changes</string>
     <string name="description_visible_bounds">Center the camera around a bounds</string>
     <string name="description_dynamic_marker">Update position and icon</string>
     <string name="description_map_padding">Map Padding example</string>
