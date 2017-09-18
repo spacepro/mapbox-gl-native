@@ -47,7 +47,7 @@
     mapCamera.pitch = 20;
     mapCamera.centerCoordinate = coordinates;
     MGLMapSnapshotOptions* options = [[MGLMapSnapshotOptions alloc] initWithStyleURL:[NSURL URLWithString:@"mapbox://styles/mapbox/traffic-day-v2"] camera:mapCamera size:CGSizeMake(imageView.frame.size.width, imageView.frame.size.height)];
-    options.zoom = 10;
+    options.zoomLevel = 10;
     
     // Create and start the snapshotter
     MGLMapSnapshotter* snapshotter = [[MGLMapSnapshotter alloc] initWithOptions:options];

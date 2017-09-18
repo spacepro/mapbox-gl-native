@@ -73,17 +73,17 @@
             cameraOptions.center = MGLLatLngFromLocationCoordinate2D(options.camera.centerCoordinate);
         }
         cameraOptions.angle = MAX(0, options.camera.heading) * mbgl::util::DEG2RAD;
-        cameraOptions.zoom = MAX(0, options.zoom);
+        cameraOptions.zoom = MAX(0, options.zoomLevel);
         cameraOptions.pitch = MAX(0, options.camera.pitch);
         
         // Region
-        mbgl::optional<mbgl::LatLngBounds> region;
-        if (!MGLCoordinateBoundsIsEmpty(options.region)) {
-            region = MGLLatLngBoundsFromCoordinateBounds(options.region);
+        mbgl::optional<mbgl::LatLngBounds> coordinateBounds;
+        if (!MGLCoordinateBoundsIsEmpty(options.coordinateBounds)) {
+            coordinateBounds = MGLLatLngBoundsFromCoordinateBounds(options.coordinateBounds);
         }
         
         // Create the snapshotter
-        mbglMapSnapshotter = std::make_unique<mbgl::MapSnapshotter>(*mbglFileSource, *mbglThreadPool, styleURL, size, pixelRatio, cameraOptions, region);
+        mbglMapSnapshotter = std::make_unique<mbgl::MapSnapshotter>(*mbglFileSource, *mbglThreadPool, styleURL, size, pixelRatio, cameraOptions, coordinateBounds);
     }
     return self;
 }

@@ -12,40 +12,41 @@ MGL_EXPORT
 @interface MGLMapSnapshotOptions : NSObject
 
 /**
- Creates a set of options with the minimum required information
+ Creates a set of options with the minimum required information.
+ 
  @param styleURL the style url to use
  @param camera the camera settings
  @param size the image size
  */
 - (instancetype)initWithStyleURL:(NSURL*)styleURL camera:(MGLMapCamera*)camera size:(CGSize)size;
 
-#pragma mark - Configuring the map
+#pragma mark - Configuring the Map
 
 /**
   The style URL for these options.
  */
-@property (nonatomic, readonly) NSURL* styleURL;
+@property (nonatomic, readonly) NSURL *styleURL;
 
 /**
- The zoom. Default is 0.
+ The zoom level. Default is 0.
  */
-@property (nonatomic) double zoom;
+@property (nonatomic) double zoomLevel;
 
 /**
  The `MGLMapcamera` options to use.
  */
-@property (nonatomic) MGLMapCamera* camera;
+@property (nonatomic) MGLMapCamera *camera;
 
 /**
- A region to capture. Overrides the center coordinate
- in the mapCamera options if set
+ The cooordinate rectangle that encompasses the bounds to capture. Overrides the center coordinate
+ in the mapCamera options if set.
  */
-@property (nonatomic) MGLCoordinateBounds region;
+@property (nonatomic) MGLCoordinateBounds coordinateBounds;
 
-#pragma mark - Configuring the image
+#pragma mark - Configuring the Image
 
 /**
- The size of the output image. Minimum is 64x64
+ The size of the output image. Minimum is 64x64.
  */
 @property (nonatomic, readonly) CGSize size;
 
@@ -60,7 +61,7 @@ MGL_EXPORT
 /**
  A block to processes the result or error of a snapshot request.
  
- The result will be either an `MGLImage` or a `NSError`
+ The result will be either an `MGLImage` or a `NSError`.
  
  @param snapshot The image that was generated or `nil` if an error occurred.
  @param error The eror that occured or `nil` when succesful.
