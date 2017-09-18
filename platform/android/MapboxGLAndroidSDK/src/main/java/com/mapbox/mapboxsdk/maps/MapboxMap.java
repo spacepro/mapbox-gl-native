@@ -1710,6 +1710,7 @@ public final class MapboxMap {
    */
   public void setOnFpsChangedListener(@Nullable OnFpsChangedListener listener) {
     onFpsChangedListener = listener;
+    nativeMapView.setOnFpsChangedListener(listener);
   }
 
   // used by MapView
