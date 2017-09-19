@@ -39,40 +39,29 @@ public abstract class TwoFingerGestureDetector extends BaseGestureDetector {
 
   private final float edgeSlop;
 
-  protected float prevFingerDiffX;
-  protected float prevFingerDiffY;
-  protected float currFingerDiffX;
-  protected float currFingerDiffY;
-
-  private float currLen;
-  private float prevLen;
-
   private PointF focus;
 
-  public TwoFingerGestureDetector(Context context) {
+  float prevFingerDiffX;
+  float prevFingerDiffY;
+  float currFingerDiffX;
+  float currFingerDiffY;
+
+  TwoFingerGestureDetector(Context context) {
     super(context);
-
     ViewConfiguration config = ViewConfiguration.get(context);
-
-    // We divide edge slop by 2 to make rotation gesture happen more easily #6870
-    edgeSlop = config.getScaledEdgeSlop() / 2;
+    edgeSlop = config.getScaledEdgeSlop();
   }
 
   @Override
-  protected abstract void handleStartProgressEvent(int actionCode,
-                                                   MotionEvent event);
+  protected abstract void handleStartProgressEvent(int actionCode, MotionEvent event);
 
   @Override
-  protected abstract void handleInProgressEvent(int actionCode,
-                                                MotionEvent event);
+  protected abstract void handleInProgressEvent(int actionCode, MotionEvent event);
 
   protected void updateStateByEvent(MotionEvent curr) {
     super.updateStateByEvent(curr);
 
     final MotionEvent prev = prevEvent;
-
-    currLen = -1;
-    prevLen = -1;
 
     // Previous
     final float px0 = prev.getX(0);
@@ -97,36 +86,6 @@ public abstract class TwoFingerGestureDetector extends BaseGestureDetector {
   }
 
   /**
-   * Return the current distance between the two pointers forming the gesture
-   * in progress.
-   *
-   * @return Distance between pointers in pixels.
-   */
-  public float getCurrentSpan() {
-    if (currLen == -1) {
-      final float cvx = currFingerDiffX;
-      final float cvy = currFingerDiffY;
-      currLen = (float) Math.sqrt(cvx * cvx + cvy * cvy);
-    }
-    return currLen;
-  }
-
-  /**
-   * Return the previous distance between the two pointers forming the gesture
-   * in progress.
-   *
-   * @return Previous distance between pointers in pixels.
-   */
-  public float getPreviousSpan() {
-    if (prevLen == -1) {
-      final float pvx = prevFingerDiffX;
-      final float pvy = prevFingerDiffY;
-      prevLen = (float) Math.sqrt(pvx * pvx + pvy * pvy);
-    }
-    return prevLen;
-  }
-
-  /**
    * MotionEvent has no getRawX(int) method; simulate it pending future API
    * approval.
    *
@@ -134,7 +93,7 @@ public abstract class TwoFingerGestureDetector extends BaseGestureDetector {
    * @param pointerIndex Pointer Index
    * @return Raw x value or 0
    */
-  protected static float getRawX(MotionEvent event, int pointerIndex) {
+  private static float getRawX(MotionEvent event, int pointerIndex) {
     float offset = event.getRawX() - event.getX();
     if (pointerIndex < event.getPointerCount()) {
       return event.getX(pointerIndex) + offset;
@@ -150,7 +109,7 @@ public abstract class TwoFingerGestureDetector extends BaseGestureDetector {
    * @param pointerIndex Pointer Index
    * @return Raw y value or 0
    */
-  protected static float getRawY(MotionEvent event, int pointerIndex) {
+  private static float getRawY(MotionEvent event, int pointerIndex) {
     float offset = event.getRawY() - event.getY();
     if (pointerIndex < event.getPointerCount()) {
       return event.getY(pointerIndex) + offset;
@@ -221,5 +180,4 @@ public abstract class TwoFingerGestureDetector extends BaseGestureDetector {
   public float getFocusY() {
     return focus.y;
   }
-
 }
