@@ -290,6 +290,9 @@ namespace mbgl {
                 }
             }
             assert(symbol.glyphOffsets.size() == 1); // We are relying on SymbolInstance.hasText filtering out symbols without any glyphs at all
+            if (symbol.glyphOffsets.size() != 1)
+                return PlacementResult::NotEnoughRoom;
+
             const float glyphOffsetX = symbol.glyphOffsets.front();
             optional<PlacedGlyph> singleGlyph = placeGlyphAlongLine(fontScale * glyphOffsetX, lineOffsetX, lineOffsetY, flip, projectedAnchorPoint, symbol.anchorPoint, symbol.segment,
                 symbol.line, labelPlaneMatrix);
